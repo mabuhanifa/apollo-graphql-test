@@ -21,9 +21,9 @@ const server = new ApolloServer({
 
 async function main() {
   await server.start();
-
   app.use(
     "/",
+    cors(),
     bodyParser.json(),
     expressMiddleware(server, {
       context: async ({ req }) => ({ token: req.headers.token }),
