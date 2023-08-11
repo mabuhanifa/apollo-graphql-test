@@ -6,9 +6,19 @@ const typeDefs = `
 
   type Query {
     books: [Book]
-    welcomeMessage(name: String): String
+    welcomeMessage(name:String):String
   }
 `;
+
+const resolvers = {
+  Query: {
+    books: () => books,
+    welcomeMessage: (parent, args) => {
+      console.log(parent, args);
+      return `Welcome to GraphQL, ${args.name}!`;
+    },
+  },
+};
 
 const books = [
   {
@@ -21,12 +31,6 @@ const books = [
   },
 ];
 
-const resolvers = {
-  Query: {
-    books: () => books,
-    welcomeMessage: () => "Welcome to GraphQL",
-  },
-  
-};
+
 
 module.exports = { typeDefs, resolvers };
