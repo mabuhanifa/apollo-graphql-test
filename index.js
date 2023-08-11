@@ -7,8 +7,6 @@ const { typeDefs, resolvers } = require("./schema");
 require("dotenv").config();
 const port = process.env.PORT || 4000;
 
-
-
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -28,6 +26,6 @@ main().catch((error) => {
   console.error("Error starting the server:", error);
 });
 
-app.listen(4000, () => {
-  console.log(` Server ready at http://localhost:4000/graphql`);
+app.listen(port, () => {
+  console.log(`GraphQL Server ready at http://localhost:${port}/graphql`);
 });
