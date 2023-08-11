@@ -6,7 +6,7 @@ const typeDefs = `
 
   type Query {
     books: [Book]
-    welcomeMessage(name:String):String
+    welcomeMessage(name:String, day:String):String
   }
 `;
 
@@ -14,8 +14,8 @@ const resolvers = {
   Query: {
     books: () => books,
     welcomeMessage: (parent, args) => {
-      console.log(parent, args);
-      return `Welcome to GraphQL, ${args.name}!`;
+      console.log(args.name);
+      return `Welcome to GraphQL, ${args.name}! Today is ${args.day}`;
     },
   },
 };
@@ -30,7 +30,5 @@ const books = [
     author: "Paul Auster",
   },
 ];
-
-
 
 module.exports = { typeDefs, resolvers };
