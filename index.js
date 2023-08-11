@@ -10,7 +10,6 @@ const port = process.env.PORT || 4000;
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.json());
 
 const server = new ApolloServer({
   typeDefs,
